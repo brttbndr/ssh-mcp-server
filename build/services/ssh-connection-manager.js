@@ -153,8 +153,11 @@ export class SSHConnectionManager {
                 sshConfig.password = config.password;
                 Logger.log(`Using password authentication for [${key}]`, "info");
             }
+            else if (config.agent) {
+                Logger.log(`Using SSH agent authentication for [${key}]`, "info");
+            }
             else {
-                return reject(new Error(`No valid authentication method provided for [${key}] (password or private key)`));
+                return reject(new Error(`No valid authentication method provided for [${key}] (password, private key, or agent)`));
             }
             client.connect(sshConfig);
         });
