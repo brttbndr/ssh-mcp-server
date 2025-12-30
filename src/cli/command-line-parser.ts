@@ -23,6 +23,8 @@ export class CommandLineParser {
         whitelist: { type: "string", short: "W" },
         blacklist: { type: "string", short: "B" },
         socksProxy: { type: "string", short: "s" },
+        agent: { type: "string", short: "a" },
+        agentForward: { type: "boolean", short: "A" },
         "pre-connect": { type: "boolean" },
       },
       allowPositionals: true,
@@ -65,6 +67,8 @@ export class CommandLineParser {
         password: conf.password,
         privateKey: conf.privateKey,
         passphrase: conf.passphrase,
+        agent: conf.agent,
+        agentForward: conf.agentForward === "true" || conf.agentForward === true,
         socksProxy: conf.socksProxy,
         commandWhitelist: conf.whitelist
           ? conf.whitelist
@@ -89,6 +93,8 @@ export class CommandLineParser {
       const password = values.password || positionals[3];
       const privateKey = values.privateKey;
       const passphrase = values.passphrase;
+      const agent = values.agent;
+      const agentForward = values.agentForward;
       const whitelist = values.whitelist;
       const blacklist = values.blacklist;
 
@@ -111,6 +117,8 @@ export class CommandLineParser {
         password,
         privateKey,
         passphrase,
+        agent,
+        agentForward,
         socksProxy: values.socksProxy,
         commandWhitelist: whitelist
           ? whitelist

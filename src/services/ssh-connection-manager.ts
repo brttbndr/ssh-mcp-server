@@ -119,6 +119,16 @@ export class SSHConnectionManager {
         port: config.port,
         username: config.username,
       };
+      // Add SSH agent configuration if provided
+      if (config.agent) {
+        sshConfig.agent = config.agent;
+        Logger.log(`Using SSH agent for [${key}]: ${config.agent}`, "info");
+      }
+      // Add SSH agent forwarding if enabled
+      if (config.agentForward) {
+        sshConfig.agentForward = true;
+        Logger.log(`SSH agent forwarding enabled for [${key}]`, "info");
+      }
       // Add SOCKS proxy configuration if provided
       if (config.socksProxy) {
         try {

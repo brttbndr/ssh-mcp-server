@@ -9,6 +9,8 @@ export interface SSHConfig {
   password?: string;
   privateKey?: string;
   passphrase?: string;
+  agent?: string; // Path to ssh-agent socket (e.g. process.env.SSH_AUTH_SOCK) or 'pageant' for Windows
+  agentForward?: boolean; // Enable SSH agent forwarding
   commandWhitelist?: string[]; // Command whitelist (array of regex strings)
   commandBlacklist?: string[]; // Command blacklist (array of regex strings)
   socksProxy?: string; // SOCKS proxy URL, e.g. 'socks://user:pass@host:port'
