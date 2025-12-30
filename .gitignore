@@ -3,7 +3,7 @@ node_modules/
 package-lock.json
 
 # 构建输出
-build/
+# build/ - committed for npx github: usage
 
 # 操作系统文件
 .DS_Store
